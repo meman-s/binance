@@ -1,12 +1,11 @@
 from aiogram import Bot, Dispatcher, executor, types
 import logging
-# from notification_bot import get_price, get_symbols
 import asyncio
-import requestsg
+import requests
 import datetime
 from keys import Bot_TOKEN
 from aiogram.contrib.fsm_storage.memory import MemoryStorage
-from aiogram.dispatcher import FSMContextx
+from aiogram.dispatcher import FSMContext
 from aiogram.dispatcher.filters.state import State, StatesGroup
 
 storage = MemoryStorage()
