@@ -1,5 +1,5 @@
 from binance.client import Client
-from api_keys import api_key, api_secret
+from keys import api_key, api_secret
 
 
 class main_class():

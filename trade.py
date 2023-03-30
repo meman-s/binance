@@ -1,5 +1,5 @@
 from binance.websocket.um_futures.websocket_client import UMFuturesWebsocketClient
-from api_keys import api_key, api_secret
+from keys import api_key, api_secret
 
 
 class Trade():

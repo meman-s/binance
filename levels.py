@@ -3,7 +3,7 @@ from binance.cm_futures import CMFutures
 from binance.client import Client
 import time
 import datetime
-from api_keys import api_key, api_secret
+from keys import api_key, api_secret
 
 client = Client(api_key='eRcMMpgk2BiwWStefc4Wkm79f1A69xDBIGRdCFQI6jEOi80XsU5VR1NKqlaG3jyu',
                 api_secret='YUkEg8eYyIQWVMY3MR9YavaRJaS9qkJw0qxlGzxHzxo1F8B3FVODiHeDJ04JqDhh')

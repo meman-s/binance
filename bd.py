@@ -1,4 +1,4 @@
-from api_keys import api_key, api_secret
+from keys import api_key, api_secret
 from binance.client import Client
 import sqlite3
 
