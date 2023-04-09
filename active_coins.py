@@ -1,5 +1,6 @@
 from binance.client import Client
 from keys import api_key, api_secret
+import asyncio
 
 
 class CoinInfo:
@@ -15,7 +16,7 @@ class CoinInfo:
                 quoteVolume = round(float(ticker.get('quoteVolume')) / 1000000, 2)
                 if abs(priceChangePercent) >= 15 or quoteVolume >= 300:
                     active_coins.append(symbol)
-        print(active_coins)
+        # print(active_coins)
         return active_coins
 
     def stock_glass(self, coin, level, radius=2, level_coefficient=4):
@@ -31,7 +32,6 @@ class CoinInfo:
 
         current_price = float(self.client.futures_symbol_ticker(symbol=coin).get('price'))
         glass = self.client.futures_order_book(symbol=coin, limit=1000)
-        min_difference = current_price
 
         # Поиск заявки максимального объёма в радиусе 2 (по дефолту)
         # ордеров от ближайшей цены к указанной
@@ -55,6 +55,7 @@ class CoinInfo:
             for bid in bids:
                 if float(bid[1]) > float(max_order[1]):
                     max_order = bid
+            print(max_order)  # Здесь выводится макс ордер
             if float(max_order[1]) >= level_coefficient * average_order:
                 return True
             else:
@@ -78,6 +79,7 @@ class CoinInfo:
             for ask in asks:
                 if float(ask[1]) > float(max_order[1]):
                     max_order = ask
+            print(max_order)  # Здесь выводится макс ордер
             if float(max_order[1]) >= level_coefficient * average_order:
                 return True
             else:
@@ -99,6 +101,7 @@ class CoinInfo:
         average_order /= (closest_index + 1)
         return (closest_index, average_order)
 
-
-nsfjdis = CoinInfo()
-nsfjdis.find_active_coins()
+# Пример работы
+# nsfjdis = CoinInfo()
+# AB = nsfjdis.stock_glass(coin='BLUEBIRDUSDT', level=8.560, radius=3, level_coefficient=2)
+# print(AB)
